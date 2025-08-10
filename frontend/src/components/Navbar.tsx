@@ -69,8 +69,6 @@ const Navbar = () => {
           >
             Home
           </a>
-          <a href="#features" className="nav-link">About</a>
-          <a href="/" className="nav-link">Portfolio</a>
           <a href="#details" className="nav-link">Contact</a>
         </nav>
 
