@@ -359,31 +359,17 @@ const Portfolio = () => {
             
             <Card className="max-w-4xl mx-auto opacity-0 animate-on-scroll">
               <CardContent className="p-8">
-                <div className="flex flex-col md:flex-row gap-6">
-                  <div className="md:w-2/3">
-                    <h3 className="text-2xl font-semibold mb-2">{education.degree}</h3>
-                    <p className="text-pulse-700 text-lg mb-2">{education.institution}</p>
-                    <p className="text-gray-600 mb-4">{education.location} • {education.period}</p>
-                    <div className="mb-4">
-                      <span className="inline-block bg-pulse-100 text-pulse-800 px-3 py-1 rounded-full text-sm font-medium">
-                        CGPA: {education.cgpa}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="md:w-1/3">
-                    <div className="bg-gray-50 p-4 rounded-lg">
-                      <h4 className="font-semibold mb-2">Key Coursework</h4>
-                      <div className="flex flex-wrap gap-1">
-                        {education.coursework.map((course) => (
-                          <Badge key={course} variant="outline" className="text-xs mb-1">
-                            {course}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
+                <div className="flex flex-col">
+                  <h3 className="text-2xl font-semibold mb-2">{education.degree}</h3>
+                  <p className="text-pulse-700 text-lg mb-2">{education.institution}</p>
+                  <p className="text-gray-600 mb-4">{education.location} • {education.period}</p>
+                  <div className="mb-6">
+                    <span className="inline-block bg-pulse-100 text-pulse-800 px-3 py-1 rounded-full text-sm font-medium">
+                      CGPA: {education.cgpa}
+                    </span>
                   </div>
                 </div>
-                <div className="mt-6 pt-6 border-t border-gray-200">
+                <div className="pt-6 border-t border-gray-200">
                   <h4 className="font-semibold mb-2">Final Year Project</h4>
                   <p className="text-gray-700">{education.finalProject}</p>
                 </div>
