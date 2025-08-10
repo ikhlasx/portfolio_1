@@ -52,13 +52,9 @@ const Navbar = () => {
             e.preventDefault();
             scrollToTop();
           }}
-          aria-label="Pulse Robot"
+          aria-label="Ikhlas PV"
         >
-          <img 
-            src="/logo.svg" 
-            alt="Pulse Robot Logo" 
-            className="h-7 sm:h-8" 
-          />
+          <span className="text-xl font-bold text-gray-900">Ikhlas PV</span>
         </a>
 
         {/* Desktop Navigation */}
