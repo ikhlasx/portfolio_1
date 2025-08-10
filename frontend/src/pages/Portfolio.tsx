@@ -346,6 +346,118 @@ const Portfolio = () => {
           </div>
         </section>
 
+        {/* Education Section */}
+        <section id="education" className="py-12 bg-gray-50/50">
+          <div className="container px-4 sm:px-6 lg:px-8">
+            <div className="pulse-chip mb-3 sm:mb-6 opacity-0 animate-on-scroll">
+              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">04</span>
+              <span>Education</span>
+            </div>
+            <h2 className="section-title text-3xl sm:text-4xl leading-tight mb-6 opacity-0 animate-on-scroll">
+              Academic Background
+            </h2>
+            
+            <Card className="max-w-4xl mx-auto opacity-0 animate-on-scroll">
+              <CardContent className="p-8">
+                <div className="flex flex-col md:flex-row gap-6">
+                  <div className="md:w-2/3">
+                    <h3 className="text-2xl font-semibold mb-2">{education.degree}</h3>
+                    <p className="text-pulse-700 text-lg mb-2">{education.institution}</p>
+                    <p className="text-gray-600 mb-4">{education.location} • {education.period}</p>
+                    <div className="mb-4">
+                      <span className="inline-block bg-pulse-100 text-pulse-800 px-3 py-1 rounded-full text-sm font-medium">
+                        CGPA: {education.cgpa}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="md:w-1/3">
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="font-semibold mb-2">Key Coursework</h4>
+                      <div className="flex flex-wrap gap-1">
+                        {education.coursework.map((course) => (
+                          <Badge key={course} variant="outline" className="text-xs mb-1">
+                            {course}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-6 pt-6 border-t border-gray-200">
+                  <h4 className="font-semibold mb-2">Final Year Project</h4>
+                  <p className="text-gray-700">{education.finalProject}</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Certifications Section */}
+        <section id="certifications" className="py-12">
+          <div className="container px-4 sm:px-6 lg:px-8">
+            <div className="pulse-chip mb-3 sm:mb-6 opacity-0 animate-on-scroll">
+              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">05</span>
+              <span>Certifications</span>
+            </div>
+            <h2 className="section-title text-3xl sm:text-4xl leading-tight mb-4 opacity-0 animate-on-scroll">
+              Professional Certifications
+            </h2>
+            <p className="section-subtitle max-w-2xl mb-8 opacity-0 animate-on-scroll">
+              Continuous learning and professional development in AI, machine learning, and software engineering.
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+              {certifications.map((cert, index) => (
+                <Card key={index} className="opacity-0 animate-on-scroll hover-scale">
+                  <CardContent className="p-6">
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-pulse-500 rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="font-medium text-gray-900">{cert}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Achievements & Leadership Section */}
+        <section id="achievements" className="py-12 bg-gray-50/50">
+          <div className="container px-4 sm:px-6 lg:px-8">
+            <div className="pulse-chip mb-3 sm:mb-6 opacity-0 animate-on-scroll">
+              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">06</span>
+              <span>Achievements</span>
+            </div>
+            <h2 className="section-title text-3xl sm:text-4xl leading-tight mb-4 opacity-0 animate-on-scroll">
+              Awards & Leadership
+            </h2>
+            <p className="section-subtitle max-w-2xl mb-8 opacity-0 animate-on-scroll">
+              Recognition for technical excellence, innovation, and leadership in academic and professional environments.
+            </p>
+            
+            <div className="grid gap-6 max-w-4xl mx-auto">
+              {achievements.map((achievement, index) => (
+                <Card key={index} className="opacity-0 animate-on-scroll hover-scale">
+                  <CardContent className="p-6">
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <div className="flex-1">
+                        <h3 className="text-xl font-semibold mb-2">{achievement.title}</h3>
+                        <p className="text-pulse-700 mb-2">{achievement.org}</p>
+                        <p className="text-gray-700">{achievement.description}</p>
+                      </div>
+                      <div className="flex-shrink-0">
+                        <span className="inline-block bg-pulse-100 text-pulse-800 px-3 py-1 rounded-full text-sm font-medium">
+                          {achievement.year}
+                        </span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Projects Section */}
         <section id="projects" className="py-12">
           <div className="container px-4 sm:px-6 lg:px-8">
