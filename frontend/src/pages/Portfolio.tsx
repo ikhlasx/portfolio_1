@@ -354,7 +354,7 @@ const Portfolio = () => {
               <span>Projects</span>
             </div>
             <h2 className="section-title text-3xl sm:text-4xl leading-tight mb-4 opacity-0 animate-on-scroll">
-              GitHub Repositories
+              Featured Projects
             </h2>
             <p className="section-subtitle max-w-2xl mb-8 opacity-0 animate-on-scroll">
               Live data fetched from GitHub and displayed in the site’s native style.
