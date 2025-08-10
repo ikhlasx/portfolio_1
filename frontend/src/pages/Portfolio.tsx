@@ -360,41 +360,101 @@ const Portfolio = () => {
               Live data fetched from GitHub and displayed in the site’s native style.
             </p>
 
-            {loading ? (
-              <p className="text-gray-600">Loading repositories…</p>
-            ) : (
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {repos.map((repo) => (
-                  <a
-                    key={repo.id}
-                    href={repo.html_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block"
-                  >
-                    <Card className="hover-scale">
-                      <CardContent className="p-5">
-                        <div className="flex items-start justify-between">
-                          <h3 className="font-semibold truncate pr-2">{repo.name}</h3>
-                          <span className="text-xs text-gray-600">⭐ {repo.stargazers_count}</span>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {projects.map((project, index) => (
+                <Dialog key={index}>
+                  <DialogTrigger asChild>
+                    <Card className="hover-scale cursor-pointer opacity-0 animate-on-scroll group">
+                      <div className="relative overflow-hidden rounded-t-lg">
+                        <img 
+                          src={project.image} 
+                          alt={project.title}
+                          className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="absolute top-4 right-4">
+                          <Badge className="bg-pulse-500/90 text-white">
+                            {project.period}
+                          </Badge>
                         </div>
-                        <p className="mt-2 text-sm text-gray-700 line-clamp-2">
-                          {repo.description || "No description available"}
+                      </div>
+                      <CardContent className="p-5">
+                        <div className="flex items-start justify-between mb-3">
+                          <h3 className="font-semibold text-lg leading-tight pr-2">{project.title}</h3>
+                          <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-pulse-500 transition-colors flex-shrink-0 mt-1" />
+                        </div>
+                        <p className="text-sm text-gray-700 mb-4 line-clamp-2">
+                          {project.shortDescription}
                         </p>
-                        <div className="mt-3 flex items-center gap-2 flex-wrap">
-                          {repo.language && (
-                            <Badge variant="outline">{repo.language}</Badge>
+                        <div className="flex flex-wrap gap-1">
+                          {project.tech.split(', ').slice(0, 3).map((tech) => (
+                            <Badge key={tech} variant="outline" className="text-xs">
+                              {tech}
+                            </Badge>
+                          ))}
+                          {project.tech.split(', ').length > 3 && (
+                            <Badge variant="outline" className="text-xs">
+                              +{project.tech.split(', ').length - 3} more
+                            </Badge>
                           )}
-                          <span className="text-xs text-gray-500">
-                            Updated {new Date(repo.updated_at).toLocaleDateString()}
-                          </span>
                         </div>
                       </CardContent>
                     </Card>
-                  </a>
-                ))}
-              </div>
-            )}
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                    <DialogHeader>
+                      <div className="flex items-center gap-4 mb-4">
+                        <img 
+                          src={project.image} 
+                          alt={project.title}
+                          className="w-20 h-20 object-cover rounded-lg"
+                        />
+                        <div className="flex-1">
+                          <DialogTitle className="text-xl font-bold mb-2">{project.title}</DialogTitle>
+                          <div className="flex items-center gap-4 text-sm text-gray-600">
+                            <div className="flex items-center gap-1">
+                              <Calendar className="w-4 h-4" />
+                              {project.period}
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <Code className="w-4 h-4" />
+                              {project.tech}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </DialogHeader>
+                    <div className="space-y-4">
+                      <div className="prose max-w-none">
+                        <h3 className="text-lg font-semibold mb-3">Project Overview</h3>
+                        <p className="text-gray-700 mb-6">{project.shortDescription}</p>
+                        
+                        <h3 className="text-lg font-semibold mb-3">Key Features & Achievements</h3>
+                        <ul className="space-y-3">
+                          {project.fullDescription.map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-3">
+                              <div className="w-2 h-2 bg-pulse-500 rounded-full mt-2 flex-shrink-0"></div>
+                              <span className="text-gray-700">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div className="border-t pt-4 mt-6">
+                        <h3 className="text-lg font-semibold mb-3">Technologies Used</h3>
+                        <div className="flex flex-wrap gap-2">
+                          {project.tech.split(', ').map((tech) => (
+                            <Badge key={tech} className="bg-pulse-50 text-pulse-700 border-pulse-200">
+                              {tech}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              ))}
+            </div>
           </div>
         </section>
 
