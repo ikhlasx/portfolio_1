@@ -204,6 +204,9 @@ const Portfolio = () => {
             )}
           </div>
         </section>
+
+        {/* Contact Section */}
+        <ContactSection />
       </main>
       <Footer />
     </div>
