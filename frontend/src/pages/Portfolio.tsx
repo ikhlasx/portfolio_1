@@ -5,6 +5,8 @@ import PortfolioHero from "@/components/PortfolioHero";
 import ContactSection from "@/components/ContactSection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { ExternalLink, Calendar, Code } from "lucide-react";
 
 interface GitHubRepo {
   id: number;
