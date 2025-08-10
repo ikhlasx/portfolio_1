@@ -346,7 +346,7 @@ const Portfolio = () => {
           </div>
         </section>
 
-        {/* GitHub Repositories */}
+        {/* Projects Section */}
         <section id="projects" className="py-12">
           <div className="container px-4 sm:px-6 lg:px-8">
             <div className="pulse-chip mb-3 sm:mb-6 opacity-0 animate-on-scroll">
