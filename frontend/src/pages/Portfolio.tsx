@@ -357,7 +357,7 @@ const Portfolio = () => {
               Featured Projects
             </h2>
             <p className="section-subtitle max-w-2xl mb-8 opacity-0 animate-on-scroll">
-              Live data fetched from GitHub and displayed in the site’s native style.
+              Innovative AI and computer vision solutions built with cutting-edge technologies and proven results.
             </p>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
