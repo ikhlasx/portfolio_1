@@ -92,57 +92,107 @@ const projects = [
     title: "Hotel Customer Retention Analytics System",
     period: "2025",
     tech: "Computer Vision, Reinforcement Learning, Face Recognition",
-    description: [
-      "Developed customer retention tracking system using IP cameras and custom face recognition models",
-      "Implemented real-time customer visit counting with display screen integration",
-      "Built custom face recognition and tracking models achieving high accuracy in hotel environments",
-      "Applied reinforcement learning framework to optimize output performance and improve system learning",
+    image: "https://images.unsplash.com/photo-1655393001768-d946c97d6fd1",
+    shortDescription: "Vision-based system to identify and track hotel customers using IP camera feeds with custom face recognition models.",
+    fullDescription: [
+      "Designed and implemented an end-to-end vision-based system to identify and track hotel customers using IP camera feeds.",
+      "Developed custom face recognition models fine-tuned for hotel-specific lighting, angles, and environment noise.",
+      "Integrated real-time visit counting with on-screen display to enhance guest engagement and create transparency.",
+      "Applied reinforcement learning algorithms to dynamically adjust recognition thresholds, improving long-term performance.",
+      "Built a centralized database to store visitor histories and generate analytics for customer retention strategies.",
+      "Optimized tracking pipeline for low-latency performance on edge devices."
     ]
   },
   {
     title: "Hospital Bystander Caller Web App",
     period: "2025",
     tech: "Flask, Twilio, QR Code, Authentication",
-    description: [
-      "Developed web application enabling medical staff to efficiently notify patient companions via automated voice calls",
-      "Implemented secure user authentication, QR code registration, and call tracking features",
-      "Created responsive admin dashboard with real-time status monitoring",
-      "Decreased staff communication time by 70% and served 30+ staff members",
+    image: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b",
+    shortDescription: "Secure web application to automate calling patient companions during emergencies using Twilio's programmable voice API.",
+    fullDescription: [
+      "Created a secure web application to automate calling patient companions (bystanders) during emergencies.",
+      "Implemented Twilio's programmable voice API for automated call initiation with customizable messages.",
+      "Developed QR code-based patient registration for quick and error-free database entries.",
+      "Built an authentication system to ensure that only authorized medical staff can initiate calls.",
+      "Designed a real-time dashboard to monitor call statuses and manage ongoing notifications.",
+      "Reduced average staff communication time by 70%, improving emergency response speed."
     ]
   },
   {
     title: "Real-Time Object Detection and Tracking System",
     period: "2024",
     tech: "YOLOv11, DeepSORT, OpenCV, MQTT",
-    description: [
-      "Designed real-time system for detecting and tracking conveyor belt products using YOLOv11 and DeepSORT",
-      "Achieved 94% detection accuracy and 90% tracking consistency in production environment",
-      "Integrated MQTT for live product counting, boosting stock analysis and streamlining product development",
-      "Optimized inference speed for real-time processing (30+ FPS) with deployment-ready architecture",
+    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    shortDescription: "High-performance vision system for detecting and tracking items on conveyor belts achieving 94% detection accuracy.",
+    fullDescription: [
+      "Engineered a high-performance vision system for detecting and tracking items on conveyor belts in manufacturing.",
+      "Achieved 94% detection accuracy and 90% tracking stability using YOLOv11 and DeepSORT integration.",
+      "Incorporated MQTT for real-time product counting, enabling live updates to inventory systems.",
+      "Optimized inference time to maintain over 30 FPS performance on edge devices.",
+      "Implemented robust object re-identification logic to handle occlusions and overlapping items.",
+      "Designed deployment scripts for seamless integration into production environments."
     ]
   },
   {
-    title: "Assistant for Trainee Teachers and Students (ATTS)",
+    title: "AI Assistant for Trainee Teachers and Students (ATTS)",
     period: "2023-2024",
     tech: "Computer Vision, CNN, MediaPipe, NLP",
-    description: [
-      "Developed AI-powered assistant providing real-time feedback and personalized guidance to trainee teachers",
-      "Implemented facial recognition and emotion detection algorithms (95% accuracy) for real-time analysis",
-      "Created personalized response generation system adapting to detected emotions and learning patterns",
-      "Built adaptive feedback mechanism adjusting difficulty based on student's emotional response",
+    image: "https://images.unsplash.com/photo-1601132359864-c974e79890ac",
+    shortDescription: "Smart assistant to analyze teaching performance and provide AI-driven feedback with 95% emotion detection accuracy.",
+    fullDescription: [
+      "Built a smart assistant to analyze teaching performance and provide AI-driven feedback in real time.",
+      "Implemented CNN-based facial recognition and emotion detection algorithms with 95% accuracy.",
+      "Integrated MediaPipe for real-time gesture and posture recognition of teachers and students.",
+      "Developed an NLP-based feedback generator that adapts its suggestions to the detected emotions and learning progress.",
+      "Designed adaptive difficulty adjustment mechanisms to improve student engagement and learning outcomes.",
+      "Created a responsive interface for both teachers and administrators to track performance analytics."
     ]
   },
   {
     title: "Train Delay Detection Using Machine Learning",
     period: "2023",
     tech: "XGBoost, Flask, Python, GPS Data",
-    description: [
-      "Developed train delay prediction model with 90% accuracy using XGBoost algorithm",
-      "Integrated real-time data like schedules and GPS for comprehensive delay forecasting",
-      "Built responsive website with HTML, CSS, Bootstrap, and JavaScript with Flask backend",
-      "Implemented real-time tracking system supporting 2,000+ daily users",
+    image: "https://images.unsplash.com/photo-1655696644743-972ed99b89f7",
+    shortDescription: "Machine learning model using XGBoost to predict train delays with 90% accuracy serving 2,000+ daily users.",
+    fullDescription: [
+      "Developed a machine learning model using XGBoost to predict train delays with 90% accuracy.",
+      "Integrated real-time GPS and schedule data for up-to-date predictions.",
+      "Built a responsive web app (Flask + HTML/CSS/JS) to display live delay forecasts and tracking.",
+      "Designed user-friendly visualization tools for commuters to check expected arrival times.",
+      "Enabled notifications for delay alerts, reaching 2,000+ daily users.",
+      "Optimized the feature engineering pipeline to improve prediction reliability across various train routes."
     ]
   },
+  {
+    title: "n8n Automation for Customer Service Voice Call Agents",
+    period: "2024-2025",
+    tech: "n8n, Twilio, OpenAI Whisper, Google Translate API",
+    image: "https://images.pexels.com/photos/8728559/pexels-photo-8728559.jpeg",
+    shortDescription: "Automated workflow for multilingual customer service with AI-driven voice transcription and translation capabilities.",
+    fullDescription: [
+      "Designed and implemented an automated n8n workflow for customer service voice agents, integrating Twilio for inbound/outbound calls.",
+      "Enabled AI-driven voice-to-text transcription using OpenAI Whisper for accurate speech recognition in real time.",
+      "Integrated translation modules to convert Malayalam speech into English and Chinese with minimal latency.",
+      "Built automated response triggers to streamline customer service queries without human intervention.",
+      "Created monitoring dashboards to track call metrics, translation accuracy, and agent performance.",
+      "Reduced manual handling time by over 60% while improving response consistency."
+    ]
+  },
+  {
+    title: "AI-Personalized Chatbot for Communication Skill Improvement",
+    period: "2024",
+    tech: "NLP, Transformer Models, Dialogflow, Flask",
+    image: "https://images.pexels.com/photos/7789851/pexels-photo-7789851.jpeg",
+    shortDescription: "AI-powered chatbot with personalized learning modules for improving verbal and written communication skills.",
+    fullDescription: [
+      "Developed an AI-powered chatbot tailored for improving users' verbal and written communication skills.",
+      "Integrated a personalized learning module that adapts difficulty levels based on the user's progress and feedback.",
+      "Utilized transformer-based NLP models for contextual understanding and dynamic conversation flow.",
+      "Designed scenarios for public speaking, interview preparation, and everyday conversation practice.",
+      "Implemented analytics to track user engagement, vocabulary growth, and improvement over time.",
+      "Deployed the chatbot via web and mobile platforms for wide accessibility."
+    ]
+  }
 ];
 
 const education = {
