@@ -462,7 +462,7 @@ const Portfolio = () => {
         <section id="projects" className="py-12">
           <div className="container px-4 sm:px-6 lg:px-8">
             <div className="pulse-chip mb-3 sm:mb-6 opacity-0 animate-on-scroll">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">04</span>
+              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">07</span>
               <span>Projects</span>
             </div>
             <h2 className="section-title text-3xl sm:text-4xl leading-tight mb-4 opacity-0 animate-on-scroll">
