@@ -38,7 +38,7 @@ const ContactSection = () => {
           {/* Header */}
           <div className="text-center mb-12">
             <div className="pulse-chip mb-3 sm:mb-6 opacity-0 animate-on-scroll inline-block">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">05</span>
+              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">08</span>
               <span>Contact</span>
             </div>
             <h2 className="section-title text-3xl sm:text-4xl leading-tight mb-4 opacity-0 animate-on-scroll">
