@@ -5,7 +5,7 @@ import LottieAnimation from "./LottieAnimation";
 const PortfolioHero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
-  const [lottieData, setLottieData] = useState<any>(null);
+  const [lottieData, setLottieData] = useState<unknown>(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
