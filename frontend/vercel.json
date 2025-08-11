@@ -1,11 +1,5 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ],
-  "buildCommand": "npm run build",
-  "outputDirectory": "build",
-  "framework": "vite",
-  "github": {
-    "silent": true
-  }
+  "buildCommand": "cd .. && npm run build --prefix frontend",
+  "outputDirectory": "dist",
+  "installCommand": "cd .. && npm install --prefix frontend"
 }
