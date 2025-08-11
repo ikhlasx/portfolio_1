@@ -263,7 +263,7 @@ const Portfolio = () => {
   }, []);
 
   useEffect(() => {
-    document.title = "Ikhlas PV | Portfolio - AI Engineer";
+    document.title = "Ikhlas PV | Portfolio";
   }, []);
 
   useEffect(() => {

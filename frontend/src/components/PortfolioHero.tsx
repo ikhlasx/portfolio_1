@@ -81,7 +81,7 @@ const PortfolioHero = () => {
             </div>
 
             <h1 className="section-title text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight opacity-0 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-              Ikhlas PV<br className="hidden sm:inline" />AI Engineer
+              Hi. I'm Ikhlas PV
             </h1>
 
             <p className="section-subtitle mt-3 sm:mt-6 mb-4 sm:mb-8 leading-relaxed opacity-0 animate-fade-in text-gray-950 font-normal text-base sm:text-lg text-left" style={{ animationDelay: "0.5s" }}>
@@ -145,7 +145,7 @@ const PortfolioHero = () => {
                   <img 
                     ref={imageRef} 
                     src="https://customer-assets.emergentagent.com/job_central-folio/artifacts/t3c0ug9k_ikhlas%20new.jpg" 
-                    alt="Ikhlas PV - AI Engineer" 
+                    alt="Ikhlas PV"
                     className="w-full h-auto object-cover transition-transform duration-500 ease-out" 
                     style={{ transformStyle: 'preserve-3d' }} 
                   />
