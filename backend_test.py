@@ -219,19 +219,14 @@ class BackendTester:
         """Test serverless configuration compatibility"""
         try:
             # Test multiple concurrent requests to simulate serverless behavior
-            tasks = []
-            for i in range(5):
-                task = self.session.get(f"{API_BASE}/")
-                tasks.append(task)
-                
-            responses = await asyncio.gather(*tasks, return_exceptions=True)
+            async def make_request():
+                async with self.session.get(f"{API_BASE}/") as response:
+                    return response.status == 200
+                    
+            tasks = [make_request() for _ in range(5)]
+            results = await asyncio.gather(*tasks, return_exceptions=True)
             
-            successful_responses = 0
-            for response in responses:
-                if not isinstance(response, Exception):
-                    if response.status == 200:
-                        successful_responses += 1
-                    await response.close()
+            successful_responses = sum(1 for result in results if result is True)
                     
             if successful_responses == 5:
                 self.log_test("Serverless Compatibility", True, "All concurrent requests successful", 
