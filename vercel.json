@@ -19,11 +19,20 @@
       "dest": "api/index.py"
     },
     {
-      "handle": "filesystem"
+      "src": "/assets/(.*)",
+      "dest": "frontend/build/assets/$1"
+    },
+    {
+      "src": "/lovable-uploads/(.*)",
+      "dest": "frontend/build/lovable-uploads/$1"
+    },
+    {
+      "src": "/(.*\\..*)",
+      "dest": "frontend/build/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "frontend/build/index.html"
     }
   ]
 }
