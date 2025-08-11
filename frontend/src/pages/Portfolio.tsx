@@ -557,25 +557,6 @@ const Portfolio = () => {
           </div>
         </section>
 
-        {/* Full-Stack Demo */}
-        <section id="demo" className="py-8">
-          <div className="container px-4 sm:px-6 lg:px-8">
-            <div className="pulse-chip mb-3 sm:mb-6 opacity-0 animate-on-scroll">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">08</span>
-              <span>Demo</span>
-            </div>
-            <h2 className="section-title text-3xl sm:text-4xl leading-tight mb-4 opacity-0 animate-on-scroll">
-              Full-Stack Integration Demo
-            </h2>
-            <p className="section-subtitle max-w-2xl mb-8 opacity-0 animate-on-scroll">
-              Test the live connection between React frontend and FastAPI backend deployed on Vercel.
-            </p>
-            <div className="flex justify-center opacity-0 animate-on-scroll">
-              <StatusDemo />
-            </div>
-          </div>
-        </section>
-
         {/* Contact Section */}
         <ContactSection />
       </main>
