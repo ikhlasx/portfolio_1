@@ -109,11 +109,11 @@ const Hero = () => {
               <span>Purpose</span>
             </div>
             
-            <h1 
-              className="section-title text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight opacity-0 animate-fade-in" 
+            <h1
+              className="section-title text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight opacity-0 animate-fade-in"
               style={{ animationDelay: "0.3s" }}
             >
-              Atlas: Where Code<br className="hidden sm:inline" />Meets Motion
+              Hi. i'm Ikhlas Pv
             </h1>
             
             <p 
@@ -165,7 +165,7 @@ const Hero = () => {
                 <img 
                   ref={imageRef} 
                   src="https://customer-assets.emergentagent.com/job_central-folio/artifacts/t3c0ug9k_ikhlas%20new.jpg" 
-                  alt="Ikhlas PV - AI Engineer" 
+                  alt="Ikhlas PV"
                   className="w-full h-auto object-cover transition-transform duration-500 ease-out" 
                   style={{ transformStyle: 'preserve-3d' }} 
                 />
