@@ -1,5 +1,4 @@
 {
-  "version": 2,
   "builds": [
     {
       "src": "frontend/package.json",
@@ -7,23 +6,21 @@
       "config": {
         "distDir": "dist"
       }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
     },
     {
-      "src": "api/index.py",
-      "use": "@vercel/python"
+      "src": "/(.*)",
+      "dest": "/frontend/$1"
     }
   ],
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/index.py"
-    },
-    {
       "source": "/(.*)",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/(.+)",
       "destination": "/index.html"
     }
   ]
