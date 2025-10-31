@@ -39,7 +39,7 @@ const Navbar = () => {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 py-2 sm:py-3 md:py-4 transition-all duration-300",
-        isScrolled 
+        isScrolled || isMenuOpen
           ? "bg-white/80 backdrop-blur-md shadow-sm" 
           : "bg-transparent"
       )}
@@ -90,7 +90,7 @@ const Navbar = () => {
         <nav className="flex flex-col space-y-8 items-center mt-8">
           <a 
             href="#" 
-            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
+            className="text-xl font-medium text-gray-900 py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100 transition-colors" 
             onClick={(e) => {
               e.preventDefault();
               scrollToTop();
@@ -102,7 +102,7 @@ const Navbar = () => {
           </a>
           <a 
             href="#details" 
-            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
+            className="text-xl font-medium text-gray-900 py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100 transition-colors" 
             onClick={() => {
               setIsMenuOpen(false);
               document.body.style.overflow = '';
