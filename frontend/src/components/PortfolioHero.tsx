@@ -2,6 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { ArrowRight, Github, Mail } from "lucide-react";
 import LottieAnimation from "./LottieAnimation";
 
+// Update this path to use your photo - can be a local file or external URL
+const PROFILE_IMAGE = "/profile-photo.jpg"; // Place your photo in frontend/public/profile-photo.jpg
+
 const PortfolioHero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -144,7 +147,7 @@ const PortfolioHero = () => {
                 <div className="relative transition-all duration-500 ease-out overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl">
                   <img 
                     ref={imageRef} 
-                    src="https://customer-assets.emergentagent.com/job_central-folio/artifacts/t3c0ug9k_ikhlas%20new.jpg" 
+                    src={PROFILE_IMAGE} 
                     alt="Ikhlas PV"
                     className="w-full h-auto object-cover transition-transform duration-500 ease-out" 
                     style={{ transformStyle: 'preserve-3d' }} 
