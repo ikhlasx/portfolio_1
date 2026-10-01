@@ -3,6 +3,15 @@ import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 
+// Drop the resume PDF into frontend/public/resume.pdf
+const RESUME_URL = "/resume.pdf";
+
+const sectionLinks = [
+  { href: "#projects", label: "Projects" },
+  { href: "#experience", label: "Experience" },
+  { href: "#details", label: "Contact" },
+];
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -89,7 +98,14 @@ const Navbar = () => {
             >
               Home
             </a>
-            <a href="#details" className="nav-link">Contact</a>
+            {sectionLinks.map((link) => (
+              <a key={link.href} href={link.href} className="nav-link" onClick={handleNavClick}>
+                {link.label}
+              </a>
+            ))}
+            <a href={RESUME_URL} className="nav-link" target="_blank" rel="noopener noreferrer">
+              Resume
+            </a>
           </nav>
 
           {/* Mobile hamburger menu button */}
@@ -152,12 +168,24 @@ const Navbar = () => {
             >
               Home
             </a>
-            <a 
-              href="#details" 
-              className="text-2xl font-medium text-gray-900 py-4 px-8 w-full hover:text-gray-700 transition-colors" 
-              onClick={handleNavClick}
+            {sectionLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-2xl font-medium text-gray-900 py-4 px-8 w-full hover:text-gray-700 transition-colors"
+                onClick={handleNavClick}
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href={RESUME_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-2xl font-medium text-gray-900 py-4 px-8 w-full hover:text-gray-700 transition-colors"
+              onClick={closeMenu}
             >
-              Contact
+              Resume
             </a>
           </div>
         </nav>

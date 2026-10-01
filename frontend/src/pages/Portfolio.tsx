@@ -6,38 +6,49 @@ import ContactSection from "@/components/ContactSection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { ExternalLink, Calendar, Code } from "lucide-react";
-
-interface GitHubRepo {
-  id: number;
-  name: string;
-  description: string;
-  html_url: string;
-  language: string;
-  stargazers_count: number;
-  updated_at: string;
-  topics?: string[];
-}
+import {
+  ArrowRight, Calendar, Code, ChevronDown, ChevronUp, type LucideIcon,
+  Factory, MessageCircle, ScanFace, Bot, ClipboardCheck, ScanLine,
+  UtensilsCrossed, Truck, Microscope, Users, PhoneCall, GraduationCap,
+  TrainFront, Headphones, MessagesSquare,
+} from "lucide-react";
 
 const skills: string[] = [
-  "Python (Advanced)", "JavaScript", "Java", "SQL", "C", 
+  "Python (Advanced)", "JavaScript", "Java", "SQL", "C",
   "TensorFlow", "PyTorch", "Keras", "Scikit-learn", "XGBoost",
   "OpenCV", "YOLOv11", "DeepSORT", "Computer Vision", "Object Detection",
+  "n8n", "AI Agents", "Workflow Automation", "WhatsApp Business API", "Telegram Bots",
   "Flask", "Django", "RESTful APIs", "HTML/CSS", "Bootstrap",
-  "AWS", "Azure", "Docker", "Kubernetes", "Git",
-  "MQTT", "Embedded Systems", "NVIDIA Jetson", "Raspberry Pi"
+  "AWS", "Docker", "Kubernetes", "Git", "SQLite",
+  "MQTT", "IoT Dashboards", "Embedded Systems", "NVIDIA Jetson", "Raspberry Pi"
 ];
 
+// Technologies being evaluated rather than used in production
+const exploringSkills: string[] = ["Azure", "Databricks", "SAP / Tally Integration"];
+
 const experiences = [
+  {
+    role: "AI Solution Architect",
+    org: "Impex Appliances",
+    period: "Nov 2025 - Present",
+    points: [
+      "Built bilingual WhatsApp support workflows and service dashboards for Saudi customers, covering complaints, dealer registration, feedback, and follow-ups.",
+      "Improved face-recognition time from approximately 3 to 1.5 seconds; tested attendance workflows with 200+ employees, with Google Sheets reporting and n8n device alerts.",
+      "Built smart factory dashboards for production, utilities, security, and fleet monitoring using MQTT and APIs.",
+      "Developed canteen, driver, and gate workflows connecting operational records across factory systems.",
+      "Built and tested procurement assistants for purchase-order tracking, overdue checks, and supplier follow-ups.",
+      "Designing enterprise AI architecture using Azure and Databricks, with planned SAP and Tally integrations.",
+    ],
+  },
   {
     role: "Vision Engineer – Foxconn Apple Project",
     org: "Luster Lighttech Pvt Ltd • Bangalore, India",
     period: "May 2025 - Jun 2025",
     points: [
-      "Built vision systems for accurate object detection in Apple manufacturing workflows",
-      "Debugged and optimized detection algorithms for real-time reliability",
-      "Collaborated with hardware teams to design machine-integrated vision modules",
-      "Developed software pipelines for automated object classification and inspection",
+      "Configured machine-vision tools for manufacturing inspection, calibration, and geometric measurement.",
+      "Troubleshot line detection and intersection issues using edge-polarity adjustments.",
+      "Worked with Vision Assembly and LBAS Capture across production-line vision systems.",
+      "Supported image capture, storage, and backup requirements for inspection workflows.",
     ],
   },
   {
@@ -45,11 +56,10 @@ const experiences = [
     org: "Elkitch Pvt Ltd • Mysore, India",
     period: "Sep 2024 - Feb 2025",
     points: [
-      "Engineered real-time product detection system using YOLOv11 and DeepSORT achieving 96% accuracy",
-      "Processed 120+ objects per minute on conveyor belts using optimized computer vision algorithms",
-      "Integrated MQTT protocol for live product counting, enhancing inventory management by 65%",
-      "Developed and deployed vision models for edge computing applications with scalable deployment",
-      "Implemented image preprocessing techniques to enhance detection accuracy in challenging environments",
+      "Built camera-based product counting for conveyor belts using YOLOv11 object detection and DeepSORT tracking.",
+      "Published live counts over MQTT for real-time production and inventory monitoring.",
+      "Applied image preprocessing to keep detection reliable under changing lighting and overlapping items.",
+      "Prepared and tuned vision models for edge deployment on the production line.",
     ],
   },
   {
@@ -87,13 +97,138 @@ const experiences = [
   },
 ];
 
-const projects = [
+interface Project {
+  title: string;
+  period: string;
+  status?: string;
+  tech: string[];
+  icon: LucideIcon;
+  // Optional real screenshot; when absent the card shows an icon tile instead of a stock photo
+  image?: string;
+  shortDescription: string;
+  fullDescription: string[];
+}
+
+const FEATURED_COUNT = 6;
+
+const projects: Project[] = [
   {
-    title: "Hotel Customer Retention Analytics System",
+    title: "Smart Factory Platform",
+    period: "2025-26",
+    tech: ["MQTT", "REST APIs", "IoT"],
+    icon: Factory,
+    shortDescription: "Connected production, utilities, security, and fleet dashboards for monitoring factory operations through live data.",
+    fullDescription: [
+      "Built live dashboards for production, utilities, security, and fleet monitoring across the factory.",
+      "Streamed machine and sensor data over MQTT and connected other systems through REST APIs.",
+      "Brought separate operational views together so teams can monitor the plant from one place.",
+    ],
+  },
+  {
+    title: "Saudi Customer Support Automation",
+    period: "2025-26",
+    tech: ["WhatsApp Business", "n8n", "Interakt"],
+    icon: MessageCircle,
+    shortDescription: "Built bilingual WhatsApp workflows for customer complaints, dealer registration, feedback, and service tracking.",
+    fullDescription: [
+      "Built bilingual (Arabic/English) WhatsApp workflows for Saudi customers using WhatsApp Business, Interakt, and n8n.",
+      "Automated complaint registration, dealer registration, and customer feedback collection.",
+      "Developed service dashboards for complaint tracking, follow-ups, customer records, and reporting.",
+    ],
+  },
+  {
+    title: "Face Recognition Attendance",
+    period: "2025-26",
+    tech: ["Computer Vision", "Google Sheets", "n8n"],
+    icon: ScanFace,
+    shortDescription: "Reduced recognition time from approximately 3 to 1.5 seconds and tested attendance workflows with 200+ employees.",
+    fullDescription: [
+      "Reduced face-recognition time from approximately 3 seconds to 1.5 seconds per person.",
+      "Tested the attendance workflow with 200+ employees.",
+      "Integrated attendance monitoring with Google Sheets reporting and n8n-based device alerts.",
+    ],
+  },
+  {
+    title: "Agentic AI Factory",
+    period: "2026",
+    status: "In Development",
+    tech: ["Azure", "Databricks", "AI Agents"],
+    icon: Bot,
+    shortDescription: "Designing department-level AI agents and enterprise data pipelines for procurement, production, and factory operations.",
+    fullDescription: [
+      "Researching and planning department-level AI agents for procurement, production, and factory operations.",
+      "Designing enterprise data pipelines on Azure and Databricks.",
+      "Planning integrations with SAP and Tally so agents can work with live business data.",
+      "Currently in research, planning, and testing — not yet a full enterprise deployment.",
+    ],
+  },
+  {
+    title: "Procurement AI Assistant",
+    period: "2025-26",
+    tech: ["Google Sheets", "Telegram", "AI Agents"],
+    icon: ClipboardCheck,
+    shortDescription: "Built and tested procurement workflows for purchase-order checks, overdue tracking, and supplier follow-ups.",
+    fullDescription: [
+      "Built an AI assistant that checks purchase orders stored in Google Sheets.",
+      "Flags overdue orders and sends reminders through Telegram.",
+      "Automates supplier follow-ups to reduce manual tracking by the procurement team.",
+    ],
+  },
+  {
+    title: "Conveyor Object Tracking",
+    period: "2024",
+    tech: ["YOLOv11", "DeepSORT", "MQTT"],
+    icon: ScanLine,
+    shortDescription: "Developed camera-based conveyor object detection and tracking with YOLOv11, DeepSORT, and MQTT-based live counting.",
+    fullDescription: [
+      "Built camera-based detection and tracking of products on conveyor belts at Elkitch.",
+      "Combined YOLOv11 detection with DeepSORT tracking so each item is counted once, even when items overlap.",
+      "Published live counts over MQTT for real-time production and inventory monitoring.",
+      "Prepared models and deployment scripts for edge devices on the production line.",
+    ],
+  },
+  {
+    title: "Canteen Management System",
+    period: "2025-26",
+    tech: ["SQLite", "Bluetooth Printing", "Tailscale"],
+    icon: UtensilsCrossed,
+    shortDescription: "Built meal coupon printing, expense tracking, and reporting with synchronized tablet and mobile workflows.",
+    fullDescription: [
+      "Built meal coupon printing over Bluetooth printers.",
+      "Added expense tracking and reporting backed by SQLite.",
+      "Synchronized tablet and mobile workflows over a Tailscale network.",
+    ],
+  },
+  {
+    title: "Fleet & Gate Management",
+    period: "2025-26",
+    tech: ["Millitrack GPS", "Google Sheets", "Google Drive"],
+    icon: Truck,
+    shortDescription: "Connected live GPS tracking, driver trip records, fuel information, and gate logs across factory systems.",
+    fullDescription: [
+      "Connected live Millitrack GPS tracking with driver trip records.",
+      "Recorded fuel information and gate logs in Google Sheets and Google Drive.",
+      "Linked fleet and gate records with the wider factory dashboards.",
+    ],
+  },
+  {
+    title: "Industrial Machine Vision",
     period: "2025",
-    tech: "Computer Vision, Reinforcement Learning, Face Recognition",
-    image: "https://images.unsplash.com/photo-1655393001768-d946c97d6fd1",
-    shortDescription: "Vision-based system to identify and track hotel customers using IP camera feeds with custom face recognition models.",
+    tech: ["Vision Assembly", "LBAS Capture", "Calibration"],
+    icon: Microscope,
+    shortDescription: "Configured and troubleshot manufacturing vision tools for calibration, edge detection, geometry measurement, and image capture.",
+    fullDescription: [
+      "Configured machine-vision tools for inspection, calibration, and geometric measurement on a Foxconn Apple project.",
+      "Troubleshot line detection and intersection issues using edge-polarity adjustments.",
+      "Supported image capture, storage, and backup for inspection workflows using Vision Assembly and LBAS Capture.",
+    ],
+  },
+  {
+    title: "Hotel Customer Retention Analytics",
+    period: "2025",
+    tech: ["Computer Vision", "Reinforcement Learning", "Face Recognition"],
+    icon: Users,
+    shortDescription: "Vision system that recognizes returning hotel guests from IP camera feeds to support retention analytics.",
     fullDescription: [
       "Designed and implemented an end-to-end vision-based system to identify and track hotel customers using IP camera feeds.",
       "Developed custom face recognition models fine-tuned for hotel-specific lighting, angles, and environment noise.",
@@ -104,11 +239,11 @@ const projects = [
     ]
   },
   {
-    title: "Hospital Bystander Caller Web App",
+    title: "Hospital Bystander Caller",
     period: "2025",
-    tech: "Flask, Twilio, QR Code, Authentication",
-    image: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b",
-    shortDescription: "Secure web application to automate calling patient companions during emergencies using Twilio's programmable voice API.",
+    tech: ["Flask", "Twilio", "QR Code", "Authentication"],
+    icon: PhoneCall,
+    shortDescription: "Secure web app that automatically calls patient companions during emergencies using Twilio voice.",
     fullDescription: [
       "Created a secure web application to automate calling patient companions (bystanders) during emergencies.",
       "Implemented Twilio's programmable voice API for automated call initiation with customizable messages.",
@@ -119,26 +254,11 @@ const projects = [
     ]
   },
   {
-    title: "Real-Time Object Detection and Tracking System",
-    period: "2024",
-    tech: "YOLOv11, DeepSORT, OpenCV, MQTT",
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
-    shortDescription: "High-performance vision system for detecting and tracking items on conveyor belts achieving 94% detection accuracy.",
-    fullDescription: [
-      "Engineered a high-performance vision system for detecting and tracking items on conveyor belts in manufacturing.",
-      "Achieved 94% detection accuracy and 90% tracking stability using YOLOv11 and DeepSORT integration.",
-      "Incorporated MQTT for real-time product counting, enabling live updates to inventory systems.",
-      "Optimized inference time to maintain over 30 FPS performance on edge devices.",
-      "Implemented robust object re-identification logic to handle occlusions and overlapping items.",
-      "Designed deployment scripts for seamless integration into production environments."
-    ]
-  },
-  {
-    title: "AI Assistant for Trainee Teachers and Students (ATTS)",
-    period: "2023-2024",
-    tech: "Computer Vision, CNN, MediaPipe, NLP",
-    image: "https://images.unsplash.com/photo-1601132359864-c974e79890ac",
-    shortDescription: "Smart assistant to analyze teaching performance and provide AI-driven feedback with 95% emotion detection accuracy.",
+    title: "AI Assistant for Trainee Teachers (ATTS)",
+    period: "2023-24",
+    tech: ["Computer Vision", "CNN", "MediaPipe", "NLP"],
+    icon: GraduationCap,
+    shortDescription: "Assistant that analyzes teaching sessions with vision and NLP and gives trainee teachers real-time feedback.",
     fullDescription: [
       "Built a smart assistant to analyze teaching performance and provide AI-driven feedback in real time.",
       "Implemented CNN-based facial recognition and emotion detection algorithms with 95% accuracy.",
@@ -149,11 +269,11 @@ const projects = [
     ]
   },
   {
-    title: "Train Delay Detection Using Machine Learning",
+    title: "Train Delay Prediction",
     period: "2023",
-    tech: "XGBoost, Flask, Python, GPS Data",
-    image: "https://images.unsplash.com/photo-1655696644743-972ed99b89f7",
-    shortDescription: "Machine learning model using XGBoost to predict train delays with 90% accuracy serving 2,000+ daily users.",
+    tech: ["XGBoost", "Flask", "Python", "GPS Data"],
+    icon: TrainFront,
+    shortDescription: "XGBoost model that predicts train delays from GPS and schedule data, served through a Flask web app.",
     fullDescription: [
       "Developed a machine learning model using XGBoost to predict train delays with 90% accuracy.",
       "Integrated real-time GPS and schedule data for up-to-date predictions.",
@@ -164,11 +284,11 @@ const projects = [
     ]
   },
   {
-    title: "n8n Automation for Customer Service Voice Call Agents",
-    period: "2024-2025",
-    tech: "n8n, Twilio, OpenAI Whisper, Google Translate API",
-    image: "https://images.pexels.com/photos/8728559/pexels-photo-8728559.jpeg",
-    shortDescription: "Automated workflow for multilingual customer service with AI-driven voice transcription and translation capabilities.",
+    title: "Multilingual Voice Call Agent",
+    period: "2024-25",
+    tech: ["n8n", "Twilio", "OpenAI Whisper", "Google Translate API"],
+    icon: Headphones,
+    shortDescription: "n8n voice workflow that transcribes and translates Malayalam customer calls for automated service responses.",
     fullDescription: [
       "Designed and implemented an automated n8n workflow for customer service voice agents, integrating Twilio for inbound/outbound calls.",
       "Enabled AI-driven voice-to-text transcription using OpenAI Whisper for accurate speech recognition in real time.",
@@ -179,11 +299,11 @@ const projects = [
     ]
   },
   {
-    title: "AI-Personalized Chatbot for Communication Skill Improvement",
+    title: "Communication Skills Chatbot",
     period: "2024",
-    tech: "NLP, Transformer Models, Dialogflow, Flask",
-    image: "https://images.pexels.com/photos/7789851/pexels-photo-7789851.jpeg",
-    shortDescription: "AI-powered chatbot with personalized learning modules for improving verbal and written communication skills.",
+    tech: ["NLP", "Transformer Models", "Dialogflow", "Flask"],
+    icon: MessagesSquare,
+    shortDescription: "Personalized chatbot that helps users practice interviews, public speaking, and everyday conversation.",
     fullDescription: [
       "Developed an AI-powered chatbot tailored for improving users' verbal and written communication skills.",
       "Integrated a personalized learning module that adapts difficulty levels based on the user's progress and feedback.",
@@ -202,7 +322,7 @@ const education = {
   period: "Aug 2020 - May 2024",
   cgpa: "7.0",
   coursework: [
-    "Advanced Programming Languages", "Algorithms and Data Structures", 
+    "Advanced Programming Languages", "Algorithms and Data Structures",
     "Computer Architecture", "Operating Systems", "Machine Learning", "Network Security"
   ],
   finalProject: "AI-powered assistant for trainee teachers and students using Computer Vision, CNN, MediaPipe and NLP techniques"
@@ -217,7 +337,24 @@ const certifications = [
   "Computer Vision with TensorFlow and PyTorch"
 ];
 
-const achievements = [
+interface Achievement {
+  title: string;
+  org: string;
+  year?: string;
+  description: string;
+  points?: string[];
+}
+
+const achievements: Achievement[] = [
+  {
+    title: "AI Trainer & Project Mentor",
+    org: "Speaking & Mentorship",
+    description: "Conducted AI sessions for students and professionals on practical tools, careers, and emerging skills.",
+    points: [
+      "Delivered an alumni session at EKC on building a career in the AI era.",
+      "Mentored approximately 15 student projects through IEDC.",
+    ],
+  },
   {
     title: "First Prize, National Level Hackathon",
     org: "i5, Robotics and Automation Society",
@@ -238,9 +375,110 @@ const achievements = [
   }
 ];
 
+const ProjectCard = ({ project }: { project: Project }) => {
+  const Icon = project.icon;
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Card className="hover-scale cursor-pointer opacity-0 animate-on-scroll group flex flex-col">
+          <div className="relative overflow-hidden rounded-t-lg">
+            {project.image ? (
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            ) : (
+              <div className="w-full h-48 flex items-center justify-center bg-gradient-to-br from-pulse-100 via-pulse-50 to-white">
+                <Icon className="w-16 h-16 text-pulse-500 transition-transform duration-300 group-hover:scale-110" strokeWidth={1.5} />
+              </div>
+            )}
+            <div className="absolute top-4 right-4 flex gap-2">
+              {project.status && (
+                <Badge className="bg-gray-900/90 text-white">{project.status}</Badge>
+              )}
+              <Badge className="bg-pulse-500/90 text-white">{project.period}</Badge>
+            </div>
+          </div>
+          <CardContent className="p-5 flex flex-col flex-1">
+            <h3 className="font-semibold text-lg leading-tight mb-3">{project.title}</h3>
+            <p className="text-sm text-gray-700 mb-4">{project.shortDescription}</p>
+            <div className="flex flex-wrap gap-1 mb-4">
+              {project.tech.slice(0, 3).map((tech) => (
+                <Badge key={tech} variant="outline" className="text-xs">
+                  {tech}
+                </Badge>
+              ))}
+            </div>
+            <span className="mt-auto inline-flex items-center text-sm font-medium text-pulse-600 group-hover:text-pulse-700">
+              View Case Study
+              <ArrowRight className="ml-1 w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </span>
+          </CardContent>
+        </Card>
+      </DialogTrigger>
+      <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+        <DialogHeader>
+          <div className="flex items-center gap-4 mb-4">
+            {project.image ? (
+              <img src={project.image} alt={project.title} className="w-20 h-20 object-cover rounded-lg" />
+            ) : (
+              <div className="w-20 h-20 flex-shrink-0 flex items-center justify-center rounded-lg bg-pulse-100">
+                <Icon className="w-10 h-10 text-pulse-500" strokeWidth={1.5} />
+              </div>
+            )}
+            <div className="flex-1">
+              <DialogTitle className="text-xl font-bold mb-2">{project.title}</DialogTitle>
+              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+                <div className="flex items-center gap-1">
+                  <Calendar className="w-4 h-4" />
+                  {project.period}
+                </div>
+                {project.status && (
+                  <Badge className="bg-gray-900 text-white">{project.status}</Badge>
+                )}
+                <div className="flex items-center gap-1">
+                  <Code className="w-4 h-4" />
+                  {project.tech.join(", ")}
+                </div>
+              </div>
+            </div>
+          </div>
+        </DialogHeader>
+        <div className="space-y-4">
+          <div className="prose max-w-none">
+            <h3 className="text-lg font-semibold mb-3">Project Overview</h3>
+            <p className="text-gray-700 mb-6">{project.shortDescription}</p>
+
+            <h3 className="text-lg font-semibold mb-3">What I Built</h3>
+            <ul className="space-y-3">
+              {project.fullDescription.map((item, idx) => (
+                <li key={idx} className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-pulse-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="border-t pt-4 mt-6">
+            <h3 className="text-lg font-semibold mb-3">Technologies Used</h3>
+            <div className="flex flex-wrap gap-2">
+              {project.tech.map((tech) => (
+                <Badge key={tech} className="bg-pulse-50 text-pulse-700 border-pulse-200">
+                  {tech}
+                </Badge>
+              ))}
+            </div>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
 const Portfolio = () => {
-  const [repos, setRepos] = useState<GitHubRepo[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [showAllProjects, setShowAllProjects] = useState(false);
 
   // Animate on scroll like Index
   useEffect(() => {
@@ -255,33 +493,16 @@ const Portfolio = () => {
       },
       { threshold: 0.1 }
     );
-    const elements = document.querySelectorAll(".animate-on-scroll");
+    const elements = document.querySelectorAll(".animate-on-scroll:not(.animate-fade-in)");
     elements.forEach((el) => observer.observe(el));
-    return () => {
-      elements.forEach((el) => observer.unobserve(el));
-    };
-  }, []);
+    return () => observer.disconnect();
+  }, [showAllProjects]);
 
   useEffect(() => {
     document.title = "Ikhlas PV | Portfolio";
   }, []);
 
-  useEffect(() => {
-    const fetchRepos = async () => {
-      try {
-        const res = await fetch(
-          "https://api.github.com/users/ikhlasx/repos?sort=updated&per_page=9"
-        );
-        const data = await res.json();
-        setRepos(Array.isArray(data) ? data : []);
-      } catch (e) {
-        console.error("Failed to load repos", e);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchRepos();
-  }, []);
+  const visibleProjects = showAllProjects ? projects : projects.slice(0, FEATURED_COUNT);
 
   return (
     <div className="min-h-screen">
@@ -289,34 +510,43 @@ const Portfolio = () => {
       <main className="space-y-8">
         <PortfolioHero />
 
-        {/* Skills */}
-        <section id="skills" className="py-12">
+        {/* Projects Section */}
+        <section id="projects" className="py-12 scroll-mt-20">
           <div className="container px-4 sm:px-6 lg:px-8">
             <div className="pulse-chip mb-3 sm:mb-6 opacity-0 animate-on-scroll">
               <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">02</span>
-              <span>Skills</span>
+              <span>Projects</span>
             </div>
             <h2 className="section-title text-3xl sm:text-4xl leading-tight mb-4 opacity-0 animate-on-scroll">
-              Technical Skill Matrix
+              Featured Projects
             </h2>
             <p className="section-subtitle max-w-2xl mb-8 opacity-0 animate-on-scroll">
-              Core strengths across ML/AI, full‑stack development, and user‑centered engineering.
+              Industrial AI, computer vision, and automation systems running in real factory and customer operations.
             </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-              {skills.map((s) => (
-                <div
-                  key={s}
-                  className="rounded-xl border border-gray-200/70 bg-white/60 backdrop-blur-sm p-3 text-center text-sm font-medium hover-scale opacity-0 animate-on-scroll"
-                >
-                  {s}
-                </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {visibleProjects.map((project) => (
+                <ProjectCard key={project.title} project={project} />
               ))}
             </div>
+
+            {projects.length > FEATURED_COUNT && (
+              <div className="flex justify-center mt-8">
+                <button
+                  type="button"
+                  onClick={() => setShowAllProjects((v) => !v)}
+                  className="inline-flex items-center gap-2 rounded-full border border-gray-900 px-6 py-3 text-sm font-medium text-gray-900 hover:bg-gray-900 hover:text-white transition-colors"
+                >
+                  {showAllProjects ? "Show Fewer Projects" : `View All Projects (${projects.length})`}
+                  {showAllProjects ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                </button>
+              </div>
+            )}
           </div>
         </section>
 
         {/* Experience */}
-        <section id="experience" className="py-8">
+        <section id="experience" className="py-8 scroll-mt-20">
           <div className="container px-4 sm:px-6 lg:px-8">
             <div className="pulse-chip mb-3 sm:mb-6 opacity-0 animate-on-scroll">
               <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">03</span>
@@ -327,7 +557,7 @@ const Portfolio = () => {
             </h2>
             <div className="grid gap-4">
               {experiences.map((exp) => (
-                <Card key={exp.role} className="opacity-0 animate-on-scroll">
+                <Card key={exp.role + exp.org} className="opacity-0 animate-on-scroll">
                   <CardContent className="p-5">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                       <h3 className="text-xl font-semibold">{exp.role}</h3>
@@ -346,17 +576,54 @@ const Portfolio = () => {
           </div>
         </section>
 
+        {/* Skills */}
+        <section id="skills" className="py-12 scroll-mt-20">
+          <div className="container px-4 sm:px-6 lg:px-8">
+            <div className="pulse-chip mb-3 sm:mb-6 opacity-0 animate-on-scroll">
+              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">04</span>
+              <span>Skills</span>
+            </div>
+            <h2 className="section-title text-3xl sm:text-4xl leading-tight mb-4 opacity-0 animate-on-scroll">
+              Technical Skill Matrix
+            </h2>
+            <p className="section-subtitle max-w-2xl mb-8 opacity-0 animate-on-scroll">
+              Hands-on strengths across computer vision, industrial automation, AI agents, and full-stack development.
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+              {skills.map((s) => (
+                <div
+                  key={s}
+                  className="rounded-xl border border-gray-200/70 bg-white/60 backdrop-blur-sm p-3 text-center text-sm font-medium hover-scale opacity-0 animate-on-scroll"
+                >
+                  {s}
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 flex flex-wrap items-center gap-3 opacity-0 animate-on-scroll">
+              <span className="text-sm font-semibold text-gray-700">Currently evaluating:</span>
+              {exploringSkills.map((s) => (
+                <span
+                  key={s}
+                  className="rounded-full border border-dashed border-pulse-300 bg-pulse-50 px-3 py-1 text-sm text-pulse-700"
+                >
+                  {s}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Education Section */}
         <section id="education" className="py-12 bg-gray-50/50">
           <div className="container px-4 sm:px-6 lg:px-8">
             <div className="pulse-chip mb-3 sm:mb-6 opacity-0 animate-on-scroll">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">04</span>
+              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">05</span>
               <span>Education</span>
             </div>
             <h2 className="section-title text-3xl sm:text-4xl leading-tight mb-6 opacity-0 animate-on-scroll">
               Academic Background
             </h2>
-            
+
             <Card className="max-w-4xl mx-auto opacity-0 animate-on-scroll">
               <CardContent className="p-8">
                 <div className="flex flex-col">
@@ -382,7 +649,7 @@ const Portfolio = () => {
         <section id="certifications" className="py-12">
           <div className="container px-4 sm:px-6 lg:px-8">
             <div className="pulse-chip mb-3 sm:mb-6 opacity-0 animate-on-scroll">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">05</span>
+              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">06</span>
               <span>Certifications</span>
             </div>
             <h2 className="section-title text-3xl sm:text-4xl leading-tight mb-4 opacity-0 animate-on-scroll">
@@ -391,7 +658,7 @@ const Portfolio = () => {
             <p className="section-subtitle max-w-2xl mb-8 opacity-0 animate-on-scroll">
               Continuous learning and professional development in AI, machine learning, and software engineering.
             </p>
-            
+
             <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
               {certifications.map((cert, index) => (
                 <Card key={index} className="opacity-0 animate-on-scroll hover-scale">
@@ -407,150 +674,47 @@ const Portfolio = () => {
           </div>
         </section>
 
-        {/* Achievements & Leadership Section */}
+        {/* Speaking, Achievements & Leadership Section */}
         <section id="achievements" className="py-12 bg-gray-50/50">
           <div className="container px-4 sm:px-6 lg:px-8">
             <div className="pulse-chip mb-3 sm:mb-6 opacity-0 animate-on-scroll">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">06</span>
+              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">07</span>
               <span>Achievements</span>
             </div>
             <h2 className="section-title text-3xl sm:text-4xl leading-tight mb-4 opacity-0 animate-on-scroll">
-              Awards & Leadership
+              Speaking, Awards & Leadership
             </h2>
             <p className="section-subtitle max-w-2xl mb-8 opacity-0 animate-on-scroll">
-              Recognition for technical excellence, innovation, and leadership in academic and professional environments.
+              AI training, mentorship, and recognition for technical work and leadership.
             </p>
-            
+
             <div className="grid gap-6 max-w-4xl mx-auto">
-              {achievements.map((achievement, index) => (
-                <Card key={index} className="opacity-0 animate-on-scroll hover-scale">
+              {achievements.map((achievement) => (
+                <Card key={achievement.title} className="opacity-0 animate-on-scroll hover-scale">
                   <CardContent className="p-6">
                     <div className="flex flex-col sm:flex-row gap-4">
                       <div className="flex-1">
                         <h3 className="text-xl font-semibold mb-2">{achievement.title}</h3>
                         <p className="text-pulse-700 mb-2">{achievement.org}</p>
                         <p className="text-gray-700">{achievement.description}</p>
+                        {achievement.points && (
+                          <ul className="mt-2 list-disc pl-5 space-y-1 text-gray-700">
+                            {achievement.points.map((p) => (
+                              <li key={p}>{p}</li>
+                            ))}
+                          </ul>
+                        )}
                       </div>
-                      <div className="flex-shrink-0">
-                        <span className="inline-block bg-pulse-100 text-pulse-800 px-3 py-1 rounded-full text-sm font-medium">
-                          {achievement.year}
-                        </span>
-                      </div>
+                      {achievement.year && (
+                        <div className="flex-shrink-0">
+                          <span className="inline-block bg-pulse-100 text-pulse-800 px-3 py-1 rounded-full text-sm font-medium">
+                            {achievement.year}
+                          </span>
+                        </div>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Projects Section */}
-        <section id="projects" className="py-12">
-          <div className="container px-4 sm:px-6 lg:px-8">
-            <div className="pulse-chip mb-3 sm:mb-6 opacity-0 animate-on-scroll">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">07</span>
-              <span>Projects</span>
-            </div>
-            <h2 className="section-title text-3xl sm:text-4xl leading-tight mb-4 opacity-0 animate-on-scroll">
-              Featured Projects
-            </h2>
-            <p className="section-subtitle max-w-2xl mb-8 opacity-0 animate-on-scroll">
-              Innovative AI and computer vision solutions built with cutting-edge technologies and proven results.
-            </p>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects.map((project, index) => (
-                <Dialog key={index}>
-                  <DialogTrigger asChild>
-                    <Card className="hover-scale cursor-pointer opacity-0 animate-on-scroll group">
-                      <div className="relative overflow-hidden rounded-t-lg">
-                        <img 
-                          src={project.image} 
-                          alt={project.title}
-                          className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div className="absolute top-4 right-4">
-                          <Badge className="bg-pulse-500/90 text-white">
-                            {project.period}
-                          </Badge>
-                        </div>
-                      </div>
-                      <CardContent className="p-5">
-                        <div className="flex items-start justify-between mb-3">
-                          <h3 className="font-semibold text-lg leading-tight pr-2">{project.title}</h3>
-                          <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-pulse-500 transition-colors flex-shrink-0 mt-1" />
-                        </div>
-                        <p className="text-sm text-gray-700 mb-4 line-clamp-2">
-                          {project.shortDescription}
-                        </p>
-                        <div className="flex flex-wrap gap-1">
-                          {project.tech.split(', ').slice(0, 3).map((tech) => (
-                            <Badge key={tech} variant="outline" className="text-xs">
-                              {tech}
-                            </Badge>
-                          ))}
-                          {project.tech.split(', ').length > 3 && (
-                            <Badge variant="outline" className="text-xs">
-                              +{project.tech.split(', ').length - 3} more
-                            </Badge>
-                          )}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                    <DialogHeader>
-                      <div className="flex items-center gap-4 mb-4">
-                        <img 
-                          src={project.image} 
-                          alt={project.title}
-                          className="w-20 h-20 object-cover rounded-lg"
-                        />
-                        <div className="flex-1">
-                          <DialogTitle className="text-xl font-bold mb-2">{project.title}</DialogTitle>
-                          <div className="flex items-center gap-4 text-sm text-gray-600">
-                            <div className="flex items-center gap-1">
-                              <Calendar className="w-4 h-4" />
-                              {project.period}
-                            </div>
-                            <div className="flex items-center gap-1">
-                              <Code className="w-4 h-4" />
-                              {project.tech}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </DialogHeader>
-                    <div className="space-y-4">
-                      <div className="prose max-w-none">
-                        <h3 className="text-lg font-semibold mb-3">Project Overview</h3>
-                        <p className="text-gray-700 mb-6">{project.shortDescription}</p>
-                        
-                        <h3 className="text-lg font-semibold mb-3">Key Features & Achievements</h3>
-                        <ul className="space-y-3">
-                          {project.fullDescription.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-3">
-                              <div className="w-2 h-2 bg-pulse-500 rounded-full mt-2 flex-shrink-0"></div>
-                              <span className="text-gray-700">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      <div className="border-t pt-4 mt-6">
-                        <h3 className="text-lg font-semibold mb-3">Technologies Used</h3>
-                        <div className="flex flex-wrap gap-2">
-                          {project.tech.split(', ').map((tech) => (
-                            <Badge key={tech} className="bg-pulse-50 text-pulse-700 border-pulse-200">
-                              {tech}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </DialogContent>
-                </Dialog>
               ))}
             </div>
           </div>

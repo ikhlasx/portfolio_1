@@ -88,7 +88,7 @@ const PortfolioHero = () => {
             </h1>
 
             <p className="section-subtitle mt-3 sm:mt-6 mb-4 sm:mb-8 leading-relaxed opacity-0 animate-fade-in text-gray-950 font-normal text-base sm:text-lg text-left" style={{ animationDelay: "0.5s" }}>
-              AI Engineer & Full‑Stack Developer experienced in Python, TensorFlow, NLP, Computer Vision, and building production‑ready apps with Flask/Django. Passionate about intelligent systems that blend code with human‑centered design.
+              AI Solution Architect & Full‑Stack Developer building computer vision systems, smart factory dashboards, and workflow automation. Currently developing agentic AI solutions that connect business data with everyday operations.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in" style={{ animationDelay: "0.7s" }}>
